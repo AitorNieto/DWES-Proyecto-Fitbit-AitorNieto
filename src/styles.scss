@@ -1,0 +1,126 @@
+/* Tema global: bonito y elegante (variables, tipografía y utilidades)
+	 Aplicar este archivo para dar una apariencia consistente a los componentes.
+*/
+
+:root {
+	/* Paleta */
+	--bg: #f6f8fb;
+	--surface: #ffffff;
+	--primary: #00B2B2; /* Conserva el color existente del proyecto */
+	--primary-700: #0a8f8f;
+	--text: #1f2937;
+	--muted: #6b7280;
+	--accent: #7c9aa5;
+
+	--radius: 10px;
+	--card-shadow: 0 6px 18px rgba(31,41,55,0.06);
+	--card-shadow-soft: 0 4px 12px rgba(31,41,55,0.04);
+}
+
+/* Reset / base */
+html, body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	background: var(--bg);
+	color: var(--text);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Layout helpers */
+.container {
+	max-width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+	color: var(--text);
+	margin: 0 0 12px 0;
+	font-weight: 600;
+}
+
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.25rem; }
+
+/* Card / Surface */
+.card, .surface {
+	background: var(--surface);
+	border-radius: var(--radius);
+	box-shadow: var(--card-shadow);
+	padding: 1rem;
+}
+
+.card-soft { box-shadow: var(--card-shadow-soft); }
+
+/* Buttons */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.9rem;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+	font-weight: 600;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+	background: linear-gradient(180deg, var(--primary), var(--primary-700));
+	color: #fff;
+	box-shadow: 0 6px 14px rgba(0,178,178,0.14);
+}
+
+.btn-ghost {
+	background: transparent;
+	color: var(--text);
+}
+
+.muted { color: var(--muted); }
+
+/* Inputs */
+input[type="text"], input[type="password"], input[type="number"], textarea, select {
+	background: #fff;
+	border: 1px solid rgba(16,24,40,0.06);
+	padding: 10px 12px;
+	border-radius: 8px;
+	outline: none;
+	transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+	border-color: var(--primary-700);
+	box-shadow: 0 6px 18px rgba(0,178,178,0.08);
+}
+
+/* Lists */
+ul { margin: 0; padding: 0; }
+li { list-style: none; }
+
+/* Common controls */
+.card-header { display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+
+.center { display:flex; justify-content:center; align-items:center; }
+
+/* Small helpers */
+.text-xs { font-size: .85rem; }
+.text-sm { font-size: .95rem; }
+
+/* Specific tweaks to match components: keep minimal overrides so component scss can refine them */
+.activity-list-container { background: var(--surface); border-radius: 8px; padding: 1rem; box-shadow: var(--card-shadow-soft); }
+.activity-form-container { background: var(--surface); border-radius: 8px; padding: 1rem; box-shadow: var(--card-shadow-soft); }
+.delete-button { color: #e11d48; background: none; border: none; cursor: pointer; }
+
+/* Accessibility */
+:focus { outline: 2px solid rgba(0,178,178,0.12); outline-offset: 2px; }
+
+/* End of global theme */

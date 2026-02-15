@@ -1,0 +1,20 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1>HealthDash</h1>
+    <p>Inicia sesión con Fitbit</p>
+    
+    <form (submit)="onLogin()" class="form-group">
+      <input type="text" [(ngModel)]="username" name="username" placeholder="Usuario" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+      
+      <button type="submit" [disabled]="!username || !password">
+        Conectar con Fitbit
+      </button>
+    </form>
+
+    <p class="register-link">
+      ¿No tienes cuenta? 
+      <a href="/register">Regístrate aquí</a>
+    </p>
+  </div>
+</div>

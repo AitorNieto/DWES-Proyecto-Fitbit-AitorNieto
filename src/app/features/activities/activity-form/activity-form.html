@@ -1,0 +1,38 @@
+<div class="form-container">
+  <h3>Nueva Actividad</h3>
+
+  @if (showSuccess()) {
+    <div class="success-toast">
+      ¡Actividad registrada con éxito en Fitbit!
+    </div>
+  }
+  
+  <div class="input-group" [class.loading-fade]="activitiesService.loading()">
+    <div class="field">
+      <label>Actividad</label>
+      <input type="text" 
+             [(ngModel)]="newActivity.type" 
+             [disabled]="activitiesService.loading()"
+             placeholder="Ej: Natación">
+    </div>
+
+    <div class="field">
+      <label>Duración (min)</label>
+      <input type="number" 
+             [(ngModel)]="newActivity.duration" 
+             [disabled]="activitiesService.loading()"
+             [class.error]="newActivity.duration < 0"
+             placeholder="Minutos">
+    </div>
+
+    <button class="btn-save" 
+            (click)="save()" 
+            [disabled]="!newActivity.type || newActivity.duration <= 0 || activitiesService.loading()">
+      {{ activitiesService.loading() ? 'Guardando...' : 'Guardar' }}
+    </button>
+  </div>
+
+  @if (newActivity.duration < 0) {
+    <p class="error-text">La duración no puede ser negativa.</p>
+  }
+</div>

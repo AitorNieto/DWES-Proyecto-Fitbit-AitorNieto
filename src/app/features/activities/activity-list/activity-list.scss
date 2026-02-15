@@ -1,0 +1,63 @@
+/* src/app/features/activities/activity-list/activity-list.scss */
+.list-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: #fcfcfc;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+
+      .type {
+        font-weight: bold;
+        color: #222;
+      }
+
+      .details {
+        font-size: 0.85rem;
+        color: #666;
+      }
+    }
+
+    .btn-delete {
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: #ff4d4d;
+      border: 1px solid #ff4d4d;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: #ff4d4d;
+        color: white;
+      }
+    }
+  }
+}

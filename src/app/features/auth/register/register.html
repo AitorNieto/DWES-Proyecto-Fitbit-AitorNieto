@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1>HealthDash</h1>
+    <p>Crear una nueva cuenta</p>
+    
+    <form (submit)="onRegister()" class="form-group">
+      <input type="text" [(ngModel)]="name" name="name" placeholder="Nombre completo" required>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+      <input type="password" [(ngModel)]="passwordConfirm" name="passwordConfirm" placeholder="Confirmar contraseña" required>
+      
+      @if (password && passwordConfirm && password !== passwordConfirm) {
+        <p class="error-text">Las contraseñas no coinciden.</p>
+      }
+      
+      <button 
+        type="submit" 
+        [disabled]="!name || !email || !password || !passwordConfirm || password !== passwordConfirm">
+        Registrarse
+      </button>
+    </form>
+
+    <p class="register-link">
+      ¿Ya tienes cuenta? 
+      <a href="/login">Inicia sesión aquí</a>
+    </p>
+  </div>
+</div>

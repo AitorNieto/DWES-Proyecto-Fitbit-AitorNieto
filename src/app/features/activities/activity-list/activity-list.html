@@ -1,0 +1,29 @@
+<div class="activities-container">
+  <h3>Mis Actividades</h3>
+
+  @if (activitiesService.loading()) {
+    <div class="loader">Cargando actividades de Fitbit...</div>
+  }
+
+  <div class="grid">
+    @for (activity of activitiesService.activities(); track activity.id) {
+      <div class="card">
+        <div class="card-header">
+          <strong>{{ activity.type }}</strong>
+          <span class="date">{{ activity.date }}</span>
+        </div>
+        <div class="card-body">
+          <p>🔥 {{ activity.calories }} kcal</p>
+          <p>⏱️ {{ activity.duration }} min</p>
+        </div>
+        <div class="card-footer">
+          <button (click)="onDelete(activity.id)" class="btn-delete">Eliminar</button>
+        </div>
+      </div>
+    } @empty {
+      @if (!activitiesService.loading()) {
+        <p>No se encontraron actividades. ¡Empieza a moverte!</p>
+      }
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	background: #222;
+	color: white;
+}
+
+.navbar strong {
+	font-weight: bold;
+}
+
+.nav-link {
+	margin-left: 20px;
+	color: white;
+	text-decoration: none;
+}
+
+.admin-link {
+	margin-right: 15px;
+	color: gold;
+	text-decoration: none;
+}
+
+.logout-button {
+	cursor: pointer;
+	background: none;
+	border: none;
+	color: inherit;
+}

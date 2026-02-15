@@ -1,0 +1,16 @@
+<div class="dashboard-layout">
+  <header>
+    <h1>Bienvenido a tu HealthDash</h1>
+    <p>Conectado como: {{ authService.currentUser()?.name }}</p>
+  </header>
+
+  <main class="content">
+    <section class="form-section">
+      <app-activity-form></app-activity-form>
+    </section>
+
+    <section class="list-section">
+      <app-activity-list></app-activity-list>
+    </section>
+  </main>
+</div>
