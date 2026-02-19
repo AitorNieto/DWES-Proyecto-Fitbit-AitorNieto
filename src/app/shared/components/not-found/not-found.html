@@ -1,5 +1,19 @@
-<div class="not-found-container">
-  <h1>404</h1>
-  <p>¡Ups! Parece que te has salido de la ruta de entrenamiento.</p>
-  <button routerLink="/dashboard" class="btn-return">Volver al Dashboard</button>
+<div class="error-page">
+  <div class="error-content">
+    <div class="error-illustration">
+      <span class="icon">🚧</span>
+      <div class="glitch-text" data-text="404">404</div>
+    </div>
+    
+    <h1>¡Ruta fuera de límites!</h1>
+    <p>
+      Parece que este entrenamiento te ha llevado a una dirección que no existe. 
+      No te preocupes, ¡puedes volver al camino principal!
+    </p>
+
+    <div class="actions">
+      <button routerLink="/" class="btn-home">Ir al Inicio</button>
+      <button routerLink="/dashboard" class="btn-dashboard">Mi Dashboard</button>
+    </div>
+  </div>
 </div>

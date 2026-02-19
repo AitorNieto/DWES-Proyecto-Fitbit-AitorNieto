@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed, Input } from '@angular/core'; // IMPORTANTE: de @angular/core
+import { Component, inject, signal, computed, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivitiesService } from '../../../core/services/activities';
@@ -16,7 +16,6 @@ export class ActivityList {
   public activitiesService = inject(ActivitiesService);
   public authService = inject(AuthService);
 
-  // Esta línea es la que resuelve el error NG8002
   @Input() activityForm: any; 
 
   searchTerm = signal<string>('');
@@ -31,6 +30,7 @@ export class ActivityList {
   });
 
   onDelete(id: string | undefined) {
+    // Si el ID existe y el usuario confirma, procedemos al borrado
     if (id && confirm('¿Estás seguro de que quieres eliminar esta actividad?')) {
       this.activitiesService.deleteActivity(id);
     }
@@ -38,7 +38,6 @@ export class ActivityList {
 
   onEdit(activity: Activity) {
     if (this.activityForm) {
-      // Llamamos al método que definimos en el componente del formulario
       this.activityForm.setEditMode(activity);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

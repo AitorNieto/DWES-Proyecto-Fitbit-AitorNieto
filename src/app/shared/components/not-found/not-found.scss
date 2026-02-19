@@ -1,0 +1,79 @@
+.error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px); // Ajustado para la navbar
+  background-color: #f8fafc;
+  text-align: center;
+  padding: 20px;
+}
+
+.error-content {
+  max-width: 500px;
+  
+  .error-illustration {
+    margin-bottom: 2rem;
+    .icon { font-size: 4rem; display: block; margin-bottom: 1rem; }
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-weight: 800;
+  }
+
+  p {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+}
+
+.glitch-text {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #00b2b2;
+  position: relative;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+               -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+               0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  animation: glitch 500ms infinite;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+
+  button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-home {
+    background-color: #00b2b2;
+    color: white;
+    &:hover { background-color: #008f8f; transform: translateY(-2px); }
+  }
+
+  .btn-dashboard {
+    background-color: white;
+    color: #1e293b;
+    border: 2px solid #e2e8f0;
+    &:hover { background-color: #f1f5f9; transform: translateY(-2px); }
+  }
+}
+
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+  14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+  15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+  /* ... más frames para el efecto ... */
+  100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
+}

@@ -1,15 +1,22 @@
 <nav class="navbar">
-  <div>
-    <strong>HealthDash</strong>
+  <div class="nav-left">
+    <strong class="logo" routerLink="/">HealthDash</strong>
+    
+    <a class="nav-link" 
+       routerLink="/" 
+       routerLinkActive="active" 
+       [routerLinkActiveOptions]="{exact: true}">Home</a>
+
     @if (authService.isLoggedIn()) {
-      <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a class="nav-link" routerLink="/dashboard" fragment="listado">Mi Actividad</a>
     }
   </div>
 
-  <div class="menu-items">
+  <div class="nav-right">
     @if (!authService.isLoggedIn()) {
       <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
-      <a class="nav-link" routerLink="/register">Registrarse</a>
+      <a class="btn-register" routerLink="/register">Registrarse</a>
     } 
     
     @else {
@@ -18,7 +25,7 @@
       }
       
       <span class="user-name">
-        {{ authService.currentUser()?.name || authService.currentUser()?.email }}
+        {{ authService.currentUser()?.name }}
       </span>
       
       <button class="logout-button" (click)="authService.logout()">

@@ -1,7 +1,6 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
 import { User } from '../../shared/models/user.model';
 
 @Injectable({ providedIn: 'root' })
@@ -24,6 +23,9 @@ export class AuthService {
     window.location.href = url;
   }
 
+  /**
+   * Maneja el retorno de Fitbit y asigna roles dinámicos (Check 10)
+   */
   handleAuthentication(): void {
     const hash = window.location.hash;
     if (hash.includes('access_token')) {
@@ -34,12 +36,14 @@ export class AuthService {
       if (token) {
         localStorage.setItem('token', token); 
         
+        // Recuperamos lo que el usuario escribió en el Register
         const savedUserName = localStorage.getItem('userName') || 'Usuario';
-        const savedEmail = localStorage.getItem('userEmail') || 'admin@fitbit.com';
+        const savedEmail = localStorage.getItem('userEmail') || 'user@fitbit.com';
         
-        // --- LÓGICA DE ROLES (Check 10) ---
-        // Cambia 'tu_email@ejemplo.com' por tu correo real de registro
-        const userRole = (savedEmail === 'tu_email@ejemplo.com') ? 'admin' : 'user';
+        // --- LÓGICA DE ROLES DINÁMICA ---
+        // Si el email incluye la palabra 'admin', se le asigna rol admin.
+        // Esto permite probar diferentes correos y obtener diferentes roles.
+        const userRole = savedEmail.toLowerCase().includes('admin') ? 'admin' : 'user';
 
         const user: User = { 
           email: savedEmail, 
@@ -51,6 +55,7 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(user));
         this._currentUser.set(user);
         
+        // Limpiamos la URL y navegamos
         window.history.replaceState({}, document.title, window.location.pathname);
         this.router.navigate(['/dashboard']);
       }
@@ -58,6 +63,7 @@ export class AuthService {
   }
 
   logout(): void {
+    // Guardamos datos básicos para no romper el flujo local de la práctica
     const backup = {
       name: localStorage.getItem('userName'),
       email: localStorage.getItem('userEmail'),

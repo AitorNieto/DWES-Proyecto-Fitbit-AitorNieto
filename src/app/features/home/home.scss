@@ -1,0 +1,106 @@
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: calc(100vh - 80px);
+  padding: 0 10%;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+}
+
+.hero-content {
+  max-width: 550px;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    @media (max-width: 992px) { justify-content: center; }
+  }
+
+  .logo-icon { font-size: 3.5rem; }
+  
+  h1 {
+    font-size: 4.5rem;
+    color: #1e293b;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -2px;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    strong { color: #00b2b2; }
+  }
+}
+
+.cta-group {
+  display: flex;
+  gap: 20px;
+  @media (max-width: 992px) { justify-content: center; }
+
+  button {
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-main {
+    background: #00b2b2;
+    color: white;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0, 178, 178, 0.2);
+    &:hover {
+      background: #008f8f;
+      transform: translateY(-3px);
+    }
+  }
+
+  .btn-sub {
+    background: transparent;
+    color: #00b2b2;
+    border: 2px solid #00b2b2;
+    &:hover {
+      background: rgba(0, 178, 178, 0.05);
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.hero-stats-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  .preview-card {
+    background: white;
+    padding: 25px 45px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #334155;
+    
+    &.card-1 { animation: float 4s ease-in-out infinite; }
+    &.card-2 { animation: float 4s ease-in-out infinite 1s; }
+    &.card-3 { animation: float 4s ease-in-out infinite 2s; }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
