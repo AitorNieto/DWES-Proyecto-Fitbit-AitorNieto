@@ -22,3 +22,42 @@
     gap: 2rem;
   }
 }
+
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    color: #1e293b;
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: 24px;
+  /* En pantallas grandes: 2 columnas. En móviles: 1 columna */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  align-items: start;
+}
+
+.chart-section, .list-section, .form-section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.chart-section {
+  /* Hacemos que el gráfico ocupe un poco más si hay espacio */
+  grid-column: span 1;
+  
+  h3 {
+    margin-top: 0;
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+}

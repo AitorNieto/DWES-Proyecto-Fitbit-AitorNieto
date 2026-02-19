@@ -1,12 +1,23 @@
 <div class="activities-container">
-  <h3>Mis Actividades</h3>
+  <div class="list-header">
+    <h3>Mis Actividades</h3>
+    <div class="search-box">
+      <input 
+        type="text" 
+        placeholder="Buscar ejercicio o fecha..." 
+        [ngModel]="searchTerm()" 
+        (ngModelChange)="searchTerm.set($event)"
+        class="search-input"
+      >
+    </div>
+  </div>
 
   @if (activitiesService.loading()) {
     <div class="loader">Cargando actividades de Fitbit...</div>
   }
 
   <div class="grid">
-    @for (activity of activitiesService.activities(); track activity.id) {
+    @for (activity of filteredActivities(); track activity.id) {
       <div class="card">
         <div class="card-header">
           <strong>{{ activity.type }}</strong>
@@ -16,13 +27,19 @@
           <p>🔥 {{ activity.calories }} kcal</p>
           <p>⏱️ {{ activity.duration }} min</p>
         </div>
+        
         <div class="card-footer">
-          <button (click)="onDelete(activity.id)" class="btn-delete">Eliminar</button>
+          @if (authService.isAdmin()) {
+            <button (click)="onEdit(activity)" class="btn-edit">Editar</button>
+            <button (click)="onDelete(activity.id)" class="btn-delete">Eliminar</button>
+          } @else {
+            <span class="view-only">Solo lectura</span>
+          }
         </div>
       </div>
     } @empty {
       @if (!activitiesService.loading()) {
-        <p>No se encontraron actividades. ¡Empieza a moverte!</p>
+        <p class="no-results">No se encontraron actividades.</p>
       }
     }
   </div>

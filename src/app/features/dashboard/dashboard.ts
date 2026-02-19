@@ -4,11 +4,12 @@ import { ActivityList } from '../activities/activity-list/activity-list';
 import { ActivityForm } from '../activities/activity-form/activity-form';
 import { ActivitiesService } from '../../core/services/activities'; 
 import { AuthService } from '../../core/services/auth.service';
+import { ActivityChart } from '../activities/components/activity-chart/activity-chart';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, ActivityList, ActivityForm],
+  imports: [CommonModule, ActivityList, ActivityForm, ActivityChart],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'
 })

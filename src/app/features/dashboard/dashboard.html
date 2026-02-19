@@ -6,11 +6,15 @@
 
   <main class="content">
     <section class="form-section">
-      <app-activity-form></app-activity-form>
+      <app-activity-form #formRef></app-activity-form>
     </section>
 
     <section class="list-section">
-      <app-activity-list></app-activity-list>
+      <app-activity-list [activityForm]="formRef"></app-activity-list>
     </section>
+
+    <div class="chart-section">
+      <app-activity-chart></app-activity-chart>
+    </div>
   </main>
 </div>

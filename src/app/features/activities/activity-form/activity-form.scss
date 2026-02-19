@@ -1,28 +1,24 @@
 .form-container {
   background: white;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   margin-bottom: 2rem;
 
   h3 {
     margin-top: 0;
     color: #333;
-    border-bottom: 2px solid #00b2b2;
+    border-bottom: 3px solid #00b2b2;
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 1.5rem;
   }
 
-  .input-group {
+  .input-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.2rem;
     align-items: end;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr;
-    }
 
     .field {
       display: flex;
@@ -30,16 +26,24 @@
       gap: 0.5rem;
 
       label {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #555;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #444;
+        text-transform: uppercase;
       }
 
       input {
-        padding: 0.7rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border 0.2s;
         
+        &:focus {
+          border-color: #00b2b2;
+          outline: none;
+        }
+
         &.error {
           border-color: #ff4d4d;
         }
@@ -47,26 +51,43 @@
     }
 
     .btn-save {
-      padding: 0.7rem 1.5rem;
+      grid-column: span 1;
+      padding: 0.8rem;
       background-color: #00b2b2;
       color: white;
       border: none;
-      border-radius: 4px;
-      font-weight: bold;
+      border-radius: 6px;
+      font-weight: 800;
       cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover:not(:disabled) {
+        background-color: #008a8a;
+      }
 
       &:disabled {
-        background-color: #eee;
-        color: #999;
+        background-color: #f0f0f0;
+        color: #aaa;
         cursor: not-allowed;
       }
     }
   }
 
-  .error-text {
-    color: #ff4d4d;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
+  .success-toast {
+    background-color: #e6fffa;
+    color: #234e52;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #38b2ac;
+  }
+
+  .error-toast {
+    background-color: #fff5f5;
+    color: #9b2c2c;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #f56565;
   }
 }
-

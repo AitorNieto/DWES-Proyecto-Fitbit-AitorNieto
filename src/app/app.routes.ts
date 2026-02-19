@@ -18,13 +18,17 @@ export const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [authGuard, roleGuard],
+    canActivate: [authGuard, roleGuard], // Check 10: Solo admin entra aquí
     data: { role: 'admin' },
-    loadComponent: () => import('./shared/components/not-found/not-found').then(m => m.NotFound)
+    loadComponent: () => import('./features/admin/admin-panel/admin-panel').then(m => m.AdminPanel) // O una ruta de gestión
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { 
-    path: '**', 
+    path: '404', 
     loadComponent: () => import('./shared/components/not-found/not-found').then(m => m.NotFound) 
+  },
+  { 
+    path: '**', // Check 11 & 28: Cualquier ruta inexistente
+    redirectTo: '404'
   }
 ];

@@ -1,38 +1,39 @@
 <div class="form-container">
-  <h3>Nueva Actividad</h3>
+  <h3>{{ editingId() ? 'Editar Actividad' : 'Nueva Actividad' }}</h3>
 
   @if (showSuccess()) {
-    <div class="success-toast">
-      ¡Actividad registrada con éxito en Fitbit!
-    </div>
+    <div class="success-toast">¡Operación realizada con éxito!</div>
   }
-  
-  <div class="input-group" [class.loading-fade]="activitiesService.loading()">
+
+  <div class="input-grid" [class.loading-fade]="activitiesService.loading()">
     <div class="field">
       <label>Actividad</label>
-      <input type="text" 
-             [(ngModel)]="newActivity.type" 
-             [disabled]="activitiesService.loading()"
-             placeholder="Ej: Natación">
+      <input type="text" [(ngModel)]="newActivity.type" (input)="calculateCalories()" placeholder="Ej: Natación">
+    </div>
+
+    <div class="field">
+      <label>Fecha</label>
+      <input type="date" [(ngModel)]="newActivity.date">
     </div>
 
     <div class="field">
       <label>Duración (min)</label>
-      <input type="number" 
-             [(ngModel)]="newActivity.duration" 
-             [disabled]="activitiesService.loading()"
-             [class.error]="newActivity.duration < 0"
-             placeholder="Minutos">
+      <input type="number" [(ngModel)]="newActivity.duration" (input)="calculateCalories()" [class.error]="newActivity.duration < 0">
     </div>
 
-    <button class="btn-save" 
-            (click)="save()" 
-            [disabled]="!newActivity.type || newActivity.duration <= 0 || activitiesService.loading()">
-      {{ activitiesService.loading() ? 'Guardando...' : 'Guardar' }}
-    </button>
-  </div>
+    <div class="field">
+      <label>Calorías</label>
+      <input type="number" [(ngModel)]="newActivity.calories" placeholder="kcal">
+    </div>
 
-  @if (newActivity.duration < 0) {
-    <p class="error-text">La duración no puede ser negativa.</p>
-  }
+    <div class="actions">
+        <button class="btn-save" (click)="save()" [disabled]="!newActivity.type || newActivity.duration <= 0">
+          {{ editingId() ? 'Actualizar' : 'Guardar' }}
+        </button>
+        
+        @if (editingId()) {
+          <button class="btn-cancel" (click)="cancelEdit()">Cancelar</button>
+        }
+    </div>
+  </div>
 </div>
