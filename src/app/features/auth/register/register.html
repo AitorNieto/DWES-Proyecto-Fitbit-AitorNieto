@@ -6,8 +6,18 @@
     <form (submit)="onRegister()" class="form-group">
       <input type="text" [(ngModel)]="name" name="name" placeholder="Nombre completo" required>
       <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required>
-      <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
-      <input type="password" [(ngModel)]="passwordConfirm" name="passwordConfirm" placeholder="Confirmar contraseña" required>
+      <div class="password-field">
+        <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+        <span class="toggle-eye" (click)="togglePassword()">
+          {{ showPassword ? '🙈' : '👁️' }}
+        </span>
+      </div>
+      <div class="password-field">
+        <input [type]="showPasswordConfirm ? 'text' : 'password'" [(ngModel)]="passwordConfirm" name="passwordConfirm" placeholder="Confirmar contraseña" required>
+        <span class="toggle-eye" (click)="togglePasswordConfirm()">
+          {{ showPasswordConfirm ? '🙈' : '👁️' }}
+        </span>
+      </div>
       
       @if (password && passwordConfirm && password !== passwordConfirm) {
         <p class="error-text">Las contraseñas no coinciden.</p>

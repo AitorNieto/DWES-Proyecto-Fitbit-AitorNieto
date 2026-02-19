@@ -19,6 +19,16 @@ export class Register {
   name = '';
   password = '';
   passwordConfirm = '';
+  public showPassword = false;
+  public showPasswordConfirm = false;
+
+  public togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+
+  public togglePasswordConfirm() {
+    this.showPasswordConfirm = !this.showPasswordConfirm;
+  }
 
   onRegister() {
     if (this.password !== this.passwordConfirm) {

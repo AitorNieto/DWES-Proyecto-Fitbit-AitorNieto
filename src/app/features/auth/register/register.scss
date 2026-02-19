@@ -43,6 +43,26 @@
         }
       }
 
+      .password-field {
+        position: relative;
+
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          padding-right: 2.4rem;
+        }
+
+        .toggle-eye {
+          position: absolute;
+          right: 0.8rem;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          user-select: none;
+          font-size: 1rem;
+        }
+      }
+
       .error-text {
         color: #e74c3c;
         font-size: 0.9rem;

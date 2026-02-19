@@ -15,6 +15,11 @@ export class Login {
 
   username = ''; 
   password = '';
+  public showPassword = false;
+
+  public togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 
   onLogin() {
     if (this.username.trim() && this.password.trim()) {

@@ -5,7 +5,16 @@
     
     <form (submit)="onLogin()" class="form-group">
       <input type="text" [(ngModel)]="username" name="username" placeholder="Usuario" required>
-      <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+      <div class="password-field">
+        <input [type]="showPassword ? 'text' : 'password'" 
+               [(ngModel)]="password" 
+               name="password" 
+               placeholder="Contraseña" 
+               required>
+        <span class="toggle-eye" (click)="togglePassword()">
+          {{ showPassword ? '🙈' : '👁️' }}
+        </span>
+      </div>
       
       <button type="submit" [disabled]="!username || !password">
         Conectar con Fitbit
