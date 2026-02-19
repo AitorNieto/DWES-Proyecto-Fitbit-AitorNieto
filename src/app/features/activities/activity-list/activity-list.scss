@@ -89,3 +89,11 @@
     padding: 2rem;
   }
 }
+:target {
+  animation: highlight 1.5s ease-out;
+}
+
+@keyframes highlight {
+  0% { background-color: rgba(0, 178, 178, 0.1); }
+  100% { background-color: transparent; }
+}

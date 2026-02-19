@@ -1,20 +1,22 @@
 <div class="dashboard-layout">
   <header>
-    <h1>Bienvenido a tu HealthDash</h1>
+    <h1>Bienvenido a tu <span class="brand">HealthDash</span></h1>
     <p>Conectado como: {{ authService.currentUser()?.name }}</p>
   </header>
 
   <main class="content">
-    <section class="form-section">
-      <app-activity-form #formRef></app-activity-form>
-    </section>
+    <div class="top-row">
+      <section class="form-section">
+        <app-activity-form #formRef></app-activity-form>
+      </section>
 
-    <section class="list-section">
+      <div class="chart-section">
+        <app-activity-chart></app-activity-chart>
+      </div>
+    </div>
+
+    <section class="list-section" id="listado">
       <app-activity-list [activityForm]="formRef"></app-activity-list>
     </section>
-
-    <div class="chart-section">
-      <app-activity-chart></app-activity-chart>
-    </div>
   </main>
 </div>

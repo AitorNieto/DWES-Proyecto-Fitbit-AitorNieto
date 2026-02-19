@@ -1,63 +1,45 @@
-.dashboard-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-
-  .dashboard-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-
-    h1 {
-      font-size: 2.2rem;
-      color: #333;
-      .brand { color: #00b2b2; }
-    }
-
-    p { color: #666; }
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-}
-
-.dashboard-container {
+.dashboard-layout {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 
-  h2 {
-    color: #1e293b;
-    margin-bottom: 24px;
-    font-size: 1.8rem;
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 15px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column; // Fuerza el orden vertical
+    gap: 3rem; 
+  }
+
+  .top-widgets {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr; // Formulario y Gráfico lado a lado
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
-.dashboard-grid {
-  display: grid;
-  gap: 24px;
-  /* En pantallas grandes: 2 columnas. En móviles: 1 columna */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  align-items: start;
+.form-section, .chart-section {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.chart-section, .list-section, .form-section {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.chart-section {
-  /* Hacemos que el gráfico ocupe un poco más si hay espacio */
-  grid-column: span 1;
-  
-  h3 {
-    margin-top: 0;
-    color: #64748b;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-  }
+// --- CLAVE PARA EL SCROLL ---
+.list-section {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
