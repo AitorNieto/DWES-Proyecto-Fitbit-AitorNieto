@@ -24,20 +24,22 @@
     }
 }
 
-.nav-link {
+// Unificamos .nav-link y .btn-register para que se vean igual
+.nav-link, .btn-register {
     margin-left: 20px;
-    color: #94a3b8; // Gris más apagado para los inactivos
+    color: #94a3b8; 
     text-decoration: none;
     font-weight: 500;
     position: relative;
     padding: 8px 0;
     transition: all 0.3s ease;
+    cursor: pointer;
 
     &::after {
         content: '';
         position: absolute;
         width: 0;
-        height: 3px; // Línea un poco más gruesa
+        height: 3px; 
         bottom: 0;
         left: 0;
         background-color: #00b2b2;
@@ -52,9 +54,9 @@
         }
     }
 
-    // ESTADO ACTIVO (Destaque máximo)
+    // ESTADO ACTIVO
     &.active {
-        color: #ffffff; // Blanco puro para resaltar
+        color: #ffffff; 
         font-weight: 700;
         &::after {
             width: 100%;
@@ -96,22 +98,6 @@
         color: white;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
-    }
-}
-
-.btn-register {
-    margin-left: 15px;
-    background: #00b2b2;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background: #008f8f;
-        box-shadow: 0 4px 12px rgba(0, 178, 178, 0.3);
     }
 }
 
