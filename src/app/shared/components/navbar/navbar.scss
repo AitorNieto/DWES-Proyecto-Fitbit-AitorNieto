@@ -1,30 +1,126 @@
 .navbar {
-	display: flex;
-	justify-content: space-between;
-	padding: 1rem;
-	background: #222;
-	color: white;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #1a1a1a;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-.navbar strong {
-	font-weight: bold;
+    .logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #00b2b2;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 }
 
 .nav-link {
-	margin-left: 20px;
-	color: white;
-	text-decoration: none;
+    margin-left: 20px;
+    color: #94a3b8; // Gris más apagado para los inactivos
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px; // Línea un poco más gruesa
+        bottom: 0;
+        left: 0;
+        background-color: #00b2b2;
+        transition: width 0.3s ease;
+    }
+
+    // ESTADO HOVER
+    &:hover:not(.active) {
+        color: #00b2b2;
+        &::after {
+            width: 100%;
+        }
+    }
+
+    // ESTADO ACTIVO (Destaque máximo)
+    &.active {
+        color: #ffffff; // Blanco puro para resaltar
+        font-weight: 700;
+        &::after {
+            width: 100%;
+            background-color: #00b2b2;
+        }
+    }
 }
 
 .admin-link {
-	margin-right: 15px;
-	color: gold;
-	text-decoration: none;
+    margin-right: 15px;
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 4px 12px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+
+    &:hover, &.active {
+        background: rgba(255, 215, 0, 0.1);
+        border-color: #ffd700;
+        color: #ffd700;
+    }
 }
 
 .logout-button {
-	cursor: pointer;
-	background: none;
-	border: none;
-	color: inherit;
+    cursor: pointer;
+    background: rgba(255, 77, 77, 0.1);
+    border: 1px solid #ff4d4d;
+    padding: 6px 16px;
+    border-radius: 8px;
+    color: #ff4d4d;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+
+    &:hover {
+        background: #ff4d4d;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+    }
+}
+
+.btn-register {
+    margin-left: 15px;
+    background: #00b2b2;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: #008f8f;
+        box-shadow: 0 4px 12px rgba(0, 178, 178, 0.3);
+    }
+}
+
+.user-name {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 600;
+    background: #2d2d2d;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-right: 5px;
 }

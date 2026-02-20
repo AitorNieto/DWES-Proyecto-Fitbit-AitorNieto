@@ -1,99 +1,189 @@
 .activities-container {
   background: white;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 16px; // Más redondeado para un look moderno
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 
   .list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     gap: 1rem;
     flex-wrap: wrap;
 
     h3 {
-      color: #333;
+      color: #1e293b;
       margin: 0;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      position: relative;
+
+      // Detalle visual bajo el título
+      &::after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 4px;
+        background: #00b2b2;
+        border-radius: 2px;
+        margin-top: 4px;
+      }
     }
 
     .search-input {
-      padding: 0.6rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 20px;
+      padding: 0.7rem 1.2rem;
+      border: 2px solid #f1f5f9;
+      border-radius: 12px;
       outline: none;
       font-size: 0.9rem;
-      transition: all 0.3s;
-      width: 220px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 250px;
+      background: #f8fafc;
 
       &:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        background: white;
+        border-color: #00b2b2;
+        box-shadow: 0 0 0 4px rgba(0, 178, 178, 0.1);
+        width: 280px; // Pequeña expansión al enfocar
       }
     }
   }
 
   .grid {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 
   .card {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 1rem;
-    transition: transform 0.2s;
+    background: #fff;
+    border: 1px solid #f1f5f9;
+    border-radius: 14px;
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 
     &:hover {
-      transform: translateY(-3px);
-      border-color: #3b82f6;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border-color: #00b2b2;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 0.5rem;
-      .date { font-size: 0.8rem; color: #888; }
+      align-items: flex-start;
+      margin-bottom: 1rem;
+
+      strong {
+        color: #1e293b;
+        font-size: 1.1rem;
+        text-transform: capitalize;
+      }
+
+      .date { 
+        font-size: 0.8rem; 
+        color: #94a3b8; 
+        font-weight: 500;
+        background: #f1f5f9;
+        padding: 2px 8px;
+        border-radius: 6px;
+      }
     }
 
-    .card-body p { margin: 0.2rem 0; font-size: 0.9rem; }
+    .card-body {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 1.2rem;
+
+      p { 
+        margin: 0; 
+        font-size: 0.85rem; 
+        background: #f8fafc;
+        padding: 6px 10px;
+        border-radius: 8px;
+        color: #475569;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+    }
 
     .card-footer {
-      margin-top: 1rem;
-      text-align: right;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid #f1f5f9;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
     }
   }
 
-  .btn-delete {
-    padding: 0.4rem 0.8rem;
-    background: transparent;
-    color: #ff4d4d;
-    border: 1px solid #ff4d4d;
-    border-radius: 4px;
+  // Estilos de botones mejorados
+  .btn-edit, .btn-delete {
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.75rem;
-    transition: 0.3s;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .btn-edit {
+    background: #ecfdf5;
+    color: #059669;
+    border: 1px solid #d1fae5;
 
     &:hover {
-      background: #ff4d4d;
+      background: #059669;
       color: white;
     }
   }
 
+  .btn-delete {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fee2e2;
+
+    &:hover {
+      background: #dc2626;
+      color: white;
+    }
+  }
+
+  .view-only {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-style: italic;
+  }
+
   .no-results {
     text-align: center;
-    color: #999;
+    color: #64748b;
     grid-column: 1 / -1;
-    padding: 2rem;
+    padding: 3rem;
+    font-weight: 500;
   }
 }
+
+// Resaltado cuando se navega por fragmento (#listado)
 :target {
-  animation: highlight 1.5s ease-out;
+  animation: highlight 2s ease-out;
+  scroll-margin-top: 100px;
 }
 
 @keyframes highlight {
-  0% { background-color: rgba(0, 178, 178, 0.1); }
-  100% { background-color: transparent; }
+  0% { 
+    box-shadow: 0 0 0 4px rgba(0, 178, 178, 0.4);
+    background-color: rgba(0, 178, 178, 0.05);
+  }
+  100% { 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: white;
+  }
 }
