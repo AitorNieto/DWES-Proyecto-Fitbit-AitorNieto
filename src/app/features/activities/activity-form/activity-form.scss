@@ -2,21 +2,22 @@
   background: white;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); // Sombra más suave y moderna
   margin-bottom: 2rem;
 
   h3 {
     margin-top: 0;
-    color: #333;
+    color: #1e293b;
     border-bottom: 3px solid #00b2b2;
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 1.5rem;
+    font-weight: 800;
   }
 
   .input-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); // Un poco más de ancho base
     gap: 1.2rem;
     align-items: end;
 
@@ -26,68 +27,99 @@
       gap: 0.5rem;
 
       label {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         font-weight: 700;
-        color: #444;
+        color: #64748b;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       input {
         padding: 0.75rem;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 1rem;
-        transition: border 0.2s;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        background: #f8fafc;
         
         &:focus {
           border-color: #00b2b2;
+          background: white;
+          box-shadow: 0 0 0 3px rgba(0, 178, 178, 0.1);
           outline: none;
         }
 
         &.error {
           border-color: #ff4d4d;
+          background: #fff5f5;
         }
       }
     }
 
-    .btn-save {
-      grid-column: span 1;
-      padding: 0.8rem;
-      background-color: #00b2b2;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background 0.3s;
+    // CONTENEDOR DE BOTONES
+    .actions {
+      display: flex;
+      gap: 0.8rem;
+      grid-column: span 1; // Mantiene el botón alineado en la rejilla
 
-      &:hover:not(:disabled) {
-        background-color: #008a8a;
+      button {
+        flex: 1;
+        padding: 0.8rem;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.85rem;
       }
 
-      &:disabled {
-        background-color: #f0f0f0;
-        color: #aaa;
-        cursor: not-allowed;
+      .btn-save {
+        background-color: #00b2b2;
+        color: white;
+        border: none;
+
+        &:hover:not(:disabled) {
+          background-color: #008a8a;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 178, 178, 0.2);
+        }
+
+        &:disabled {
+          background-color: #f1f5f9;
+          color: #94a3b8;
+          cursor: not-allowed;
+        }
+      }
+
+      .btn-cancel {
+        background-color: #f1f5f9;
+        color: #64748b;
+        border: 1px solid #e2e8f0;
+
+        &:hover {
+          background-color: #fee2e2; // Un rojo muy clarito al querer cancelar
+          color: #dc2626;
+          border-color: #fecaca;
+        }
       }
     }
   }
 
-  .success-toast {
-    background-color: #e6fffa;
-    color: #234e52;
+  // Toasts mejorados
+  .success-toast, .error-toast {
     padding: 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    border-left: 4px solid #38b2ac;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &::before { content: '✓'; }
   }
 
-  .error-toast {
-    background-color: #fff5f5;
-    color: #9b2c2c;
-    padding: 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-    border-left: 4px solid #f56565;
+  .success-toast {
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
   }
 }

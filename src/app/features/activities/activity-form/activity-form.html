@@ -27,13 +27,15 @@
     </div>
 
     <div class="actions">
-        <button class="btn-save" (click)="save()" [disabled]="!newActivity.type || newActivity.duration <= 0">
-          {{ editingId() ? 'Actualizar' : 'Guardar' }}
+      <button class="btn-save" (click)="save()" [disabled]="!newActivity.type || newActivity.duration <= 0">
+        {{ editingId() ? 'Actualizar' : 'Guardar' }}
+      </button>
+      
+      @if (editingId()) {
+        <button class="btn-cancel" (click)="cancelEdit()" type="button">
+          Cancelar
         </button>
-        
-        @if (editingId()) {
-          <button class="btn-cancel" (click)="cancelEdit()">Cancelar</button>
-        }
+      }
     </div>
   </div>
 </div>
