@@ -84,15 +84,6 @@ https://fitbit-aitornieto.vercel.app/
 
 ---
 
-## 📸 Capturas de pantalla
-
-![Login](screenshots/login.png)
-![Dashboard](screenshots/dashboard.png)
-
-*(Agregar imágenes dentro del directorio `screenshots/` si se desea.)*
-
----
-
 ## 📄 Documentación adicional
 
 - TSDoc en servicios principales (`AuthService`, `ActivitiesService`) y guards para facilitar el mantenimiento.
