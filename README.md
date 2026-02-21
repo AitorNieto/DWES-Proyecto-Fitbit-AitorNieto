@@ -61,7 +61,7 @@ Si en futuras ampliaciones se añade un backend o claves de terceros, se podrán
 ---
 
 ## 🔑 Cuentas de prueba
-En el registro se llamara a ala API para poder registrarse en la API, ahi tiene que ser un correo verdadero. Despues de autentificarse en la API, se redigirá a la aplicacion con las credenciales de mi registro propio. Una vez hecho esto ya estara el factor d autenticacion pasado.
+En el registro se llamara a ala API para poder registrarse en la API, ahi tiene que ser un correo verdadero. Despues de autentificarse en la API, se redigirá a la aplicacion con las credenciales del registro de la API con el token. Una vez hecho esto ya estara el factor d autenticacion pasado. Pero para probar los usuarios dados tienes que volver a registrarte con las credenciales que te dejo aqui abajo.
 
 Para loguearse con las cuentas principales son estas credenciales: 
 
