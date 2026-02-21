@@ -2,6 +2,13 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+/**
+ * Guard que se utiliza en rutas que requieren autenticación.
+ *
+ * - Si la URL contiene un `access_token` lo procesa antes de comprobar el
+ *   estado de login (caso retorno de OAuth).
+ * - Comprueba `authService.isLoggedIn()` y permite o redirige al login.
+ */
 export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);

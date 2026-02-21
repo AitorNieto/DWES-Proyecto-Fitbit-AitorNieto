@@ -7,6 +7,13 @@ import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Servicio para gestionar actividades deportivas.
+ *
+ * - Carga datos desde la API de Fitbit y/o desde `localStorage`.
+ * - Permite CRUD básico (get, add, update, delete).
+ * - Mantiene un indicador `loading` y sincroniza con `localStorage`.
+ */
 export class ActivitiesService {
   private http = inject(HttpClient);
   private apiUrl = 'https://api.fitbit.com/1/user/-/activities/list.json'; 
@@ -29,6 +36,11 @@ export class ActivitiesService {
     localStorage.setItem('activities', JSON.stringify(this.activitiesList()));
   }
 
+  /**
+   * Solicita la lista de actividades a Fitbit.
+   * Combina los resultados de la API con los registros guardados localmente
+   * (local-only) y actualiza la señal.
+   */
   getActivities() {
     this.loading.set(true);
     const queryParams = '?beforeDate=2026-02-13&offset=0&limit=20&sort=desc';
@@ -56,6 +68,11 @@ export class ActivitiesService {
     });
   }
 
+  /**
+   * Añade una nueva actividad.
+   * Intenta postearla en Fitbit; en caso de error crea un registro local
+   * con id prefijado "local-".
+   */
   addActivity(activity: Activity) {
     this.loading.set(true);
     const body = new URLSearchParams();
@@ -86,6 +103,9 @@ export class ActivitiesService {
       });
   }
 
+  /**
+   * Actualiza una actividad existente en la señal y en `localStorage`.
+   */
   updateActivity(id: string, updatedData: Activity) {
     this.activitiesList.update(current => 
       current.map(act => act.id === id ? { ...updatedData, id } : act)
@@ -93,6 +113,10 @@ export class ActivitiesService {
     this.saveActivitiesToStorage();
   }
 
+  /**
+   * Elimina una actividad, aplicando borrado optimista en la señal y
+   * realizando la petición DELETE a Fitbit.
+   */
   deleteActivity(id: string | undefined) {
     if (!id) return; // Validación de seguridad para TypeScript
 

@@ -4,6 +4,14 @@ import { Router } from '@angular/router';
 import { User } from '../../shared/models/user.model';
 
 @Injectable({ providedIn: 'root' })
+/**
+ * Servicio principal de autenticación.
+ *
+ * - Maneja el login mediante OAuth de Fitbit.
+ * - Controla el estado de usuario a través de Signals.
+ * - Proporciona helpers para saber si el usuario está logueado o es administrador.
+ * - Guarda/recupera información en `localStorage`.
+ */
 export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
@@ -17,6 +25,10 @@ export class AuthService {
   public isAdmin = computed(() => this._currentUser()?.role === 'admin');
   public currentUser = this._currentUser.asReadonly();
 
+  /**
+   * Redirige al usuario al flujo de autorización de Fitbit.
+   * El token resultante será capturado por `handleAuthentication`.
+   */
   loginFitbit(): void {
     const scope = encodeURIComponent('activity profile heartrate sleep');
     const url = `https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=${this.CLIENT_ID}&redirect_uri=${encodeURIComponent(this.REDIRECT_URI)}&scope=${scope}&expires_in=3600`;
@@ -24,7 +36,10 @@ export class AuthService {
   }
 
   /**
-   * Maneja el retorno de Fitbit y asigna roles dinámicos (Check 10)
+   * Procesa la URL hash devuelta tras la autenticación de Fitbit.
+   * Extrae el access_token y el user_id, asigna un rol según el correo
+   * (``admin`` si contiene la palabra "admin") y persiste el usuario.
+   * Después limpia el hash de la URL y navega al dashboard.
    */
   handleAuthentication(): void {
     const hash = window.location.hash;
@@ -62,6 +77,13 @@ export class AuthService {
     }
   }
 
+  /**
+   * Cierra la sesión del usuario.
+   * 
+   * Realiza un "backup" rápido en localStorage para no perder los datos
+   * de la práctica (nombre, email, contraseña y actividades) y luego
+   * limpia el storage y redirige al login.
+   */
   logout(): void {
     // Guardamos datos básicos para no romper el flujo local de la práctica
     const backup = {

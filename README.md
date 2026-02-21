@@ -1,59 +1,110 @@
 # FitBit
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.3.
+**FitBit** es una aplicación web de ejemplo que consume y administra datos de actividades físicas utilizando la API de Fitbit. Permite a los usuarios registrados ver, crear y editar actividades, y ofrece una sección de administración para gestionar usuarios.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📦 Tecnologías utilizadas
 
-```bash
-ng serve
+- Angular 21
+- TypeScript
+- SCSS
+- Vitest para pruebas unitarias
+- Angular CLI
+- Firebase/Backend propio (ajustar según proyecto real)
+
+---
+
+## 🚀 Descripción del proyecto
+
+Este proyecto forma parte de la asignatura DWES y demuestra:
+
+1. Autenticación y autorización con JWT.
+2. Uso de guards (`AuthGuard`, `RoleGuard`).
+3. Consumo de servicios REST (`AuthService`, `ActivitiesService`, etc.).
+4. Gestión de rutas y módulos de características.
+5. Interceptores para añadir el token a cada petición.
+
+La interfaz incluye login, registro, listado de actividades, formularios para crear/editar y un panel de administración.
+
+---
+
+## ⚙️ Requisitos y variables de entorno
+
+Este proyecto **no cuenta con un backend propio**: utiliza directamente la API pública de Fitbit para obtener y enviar datos.
+
+Por ello **no es necesario configurar variables de entorno** específicas para el servidor; los valores utilizados están codificados en los servicios.
+
+Si en futuras ampliaciones se añade un backend o claves de terceros, se podrán declarar en `src/environments/environment.ts` o mediante variables del entorno de despliegue.
+
+
+---
+
+## 💻 Instalación y ejecución local
+
+1. Clonar el repositorio:
+   ```bash
+    git clone https://github.com/AitorNieto/DWES-Proyecto-Fitbit-AitorNieto.git
+
+    cd DWES-Proyecto-Fitbit-AitorNieto
+    ```
+2. Instalar dependencias:
+   ```bash
+    npm install
+    ```
+3. Levantar servidor de desarrollo:
+    ```bash
+    ng serve
+    ```
+4. Abrir [http://localhost:4200](http://localhost:4200) en el navegador. La aplicación recargará al guardar cambios.
+
+---
+
+## 🔑 Cuentas de prueba
+En el registro se llamara a ala API para poder registrarse en la API, ahi tiene que ser un correo verdadero. Despues de autentificarse en la API, se redijira a la aplicacion con las credenciales de mi registro propio. Una vez hecho esto ya estara el factor d autenticacion pasado.
+
+Para loguearse con las cuentas principales son estas credenciales: 
+
+| Rol      | Usuario            | Correo | Contraseña   |
+|----------|--------------------|--------|--------------|
+| Usuario  | `usuario`| `usuario1@gmail.com` | `contraseñausuario`  |
+| Admin    | `admin`| `admin1@gmail.com`| `contraseñaadmin`  |
+
+
+---
+
+## 🌐 URL de despliegue
+
+La aplicación está disponible en:
+
+```
+https://fitbit-demo.example.com
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📸 Capturas de pantalla
 
-```bash
-ng generate component component-name
-```
+![Login](screenshots/login.png)
+![Dashboard](screenshots/dashboard.png)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+*(Agregar imágenes dentro del directorio `screenshots/` si se desea.)*
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## 📄 Documentación adicional
 
-To build the project run:
+- TSDoc en servicios principales (`AuthService`, `ActivitiesService`) y guards para facilitar el mantenimiento.
+- Comentarios inline en métodos críticos.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📚 Recursos
 
-## Running unit tests
+- [Angular Documentation](https://angular.dev/docs)
+- [Angular CLI](https://angular.dev/cli)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**¡Gracias por utilizar FitBit!**
