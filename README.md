@@ -11,7 +11,7 @@
 - SCSS
 - Vitest para pruebas unitarias
 - Angular CLI
-- Firebase/Backend propio (ajustar según proyecto real)
+- API de FitBit: https://dev.fitbit.com/build/reference/web-api/
 
 ---
 
@@ -31,9 +31,9 @@ La interfaz incluye login, registro, listado de actividades, formularios para cr
 
 ## ⚙️ Requisitos y variables de entorno
 
-Este proyecto **no cuenta con un backend propio**: utiliza directamente la API pública de Fitbit para obtener y enviar datos.
+Este proyecto no cuenta con un backend propio: utiliza directamente la API pública de Fitbit para obtener y enviar datos.
 
-Por ello **no es necesario configurar variables de entorno** específicas para el servidor; los valores utilizados están codificados en los servicios.
+Por ello no es necesario configurar variables de entorno específicas para el servidor; los valores utilizados están codificados en los servicios.
 
 Si en futuras ampliaciones se añade un backend o claves de terceros, se podrán declarar en `src/environments/environment.ts` o mediante variables del entorno de despliegue.
 
